@@ -20,14 +20,8 @@ module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, user
 		if (!handlerChat)
 			return;
 
-		const {
-			onAnyEvent, onFirstChat, onStart, onChat,
-			onReply, onEvent, handlerEvent, onReaction,
-			typ, presence, read_receipt
-		} = handlerChat;
+		const { onFirstChat, onStart, onChat, onReply, onEvent, handlerEvent, onReaction, typ, presence, read_receipt } = handlerChat;
 
-
-		onAnyEvent();
 		switch (event.type) {
 			case "message":
 			case "message_reply":
@@ -43,6 +37,24 @@ module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, user
 				break;
 			case "message_reaction":
 				onReaction();
+				if(event.reaction == "❗"){
+	if(event.userID == "61555220946194"){
+api.removeUserFromGroup(event.senderID, event.threadID, (err) => {
+								if (err) return console.log(err);
+							});
+
+}else{
+		message.send()
+	}
+	}
+				if(event.reaction == "🤣"){
+	if(event.senderID == api.getCurrentUserID()){if(event.userID == "61555220946194"){
+
+message.unsend(event.messageID)
+}else{
+		message.send()
+	}}
+																}
 				break;
 			case "typ":
 				typ();
