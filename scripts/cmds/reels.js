@@ -11,7 +11,7 @@ async function downloadImage(url, destination) {
 module.exports = {
   config: {
     name: "reels",
-    aliases: [],
+    aliases: [" rl"],
     author: "kshitiz",
     version: "1.1",
     shortDescription: {
