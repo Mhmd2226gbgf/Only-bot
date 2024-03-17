@@ -13,7 +13,6 @@ const doNotDelete = "[ Ade-💗]";
 module.exports = {
 	config: {
 		name: "help",
-    aliases: "c",
 		version: "1.17",
 		author: "NTKhang",
 		countDown: 5,
