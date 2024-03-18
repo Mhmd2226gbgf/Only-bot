@@ -2,7 +2,7 @@ const axios = require('axios');
 
 module.exports = {
 	config: {
-		name: "Download",
+		name: "download",
 		version: "1.0",
 		author: "loufi",
 		countDown: 0,
@@ -20,26 +20,26 @@ module.exports = {
 		else {
 			const BASE_URL = `https://www.nguyenmanh.name.vn/api/igDL?url=${encodeURIComponent(name)}=&apikey=SyryTUZn`;
 
-       await message.reply("Downloading video please wait....");
+			 await message.reply("Downloading video please wait....");
 
-      
+
 			try {
 				let res = await axios.get(BASE_URL)
 
-      
-         let title = res.data.result.title
-			
+
+				 let title = res.data.result.title
+
 				let img =  res.data.result.video[0].url;
 
 				const form = {
 					body: `${title}`
 				};
-		  if (img)
+			if (img)
 					form.attachment = await global.utils.getStreamFromURL(img);
 				message.reply(form);  
 			} catch (e) { message.reply(`Sorry Link is not supported🥺`)
-                  console.log(e);
-                  }
+									console.log(e);
+									}
 
 		}
 	}
