@@ -4,7 +4,7 @@ const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
 const doNotDelete = "[ Author :- Aak Ash]";
-const = " [ Ade | v2_bot]";
+const doNotDelete = "[ Ade | v2_bot]";
 
 /** 
 * @author NTKhang
