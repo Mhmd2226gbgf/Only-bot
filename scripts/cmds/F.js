@@ -1,6 +1,6 @@
 module.exports = {
   config: {
-    name: "fb",
+    name: "f",
     version: "1.0",
     author: "Shikaki",
     countDown: 10,
@@ -60,4 +60,7 @@ module.exports = {
       message.reply({
         body: userInformation,
         attachment: await global.utils.getStreamFromURL(avatarUrl)
-      };
+      });
+    });
+  }
+};
