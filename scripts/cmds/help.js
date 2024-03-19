@@ -7,7 +7,7 @@ const doNotDelete = "[ ♥| Ade-Bot ]"; // changing this wont change the goatbot
 
 module.exports = {
 	config: {
-		name: "help2",
+		name: "help",
 		version: "1.17",
 		author: "NTKhang", // original author Kshitiz 
 		countDown: 5,
