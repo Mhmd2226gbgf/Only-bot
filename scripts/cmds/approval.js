@@ -9,7 +9,7 @@ module.exports = {
     category: "events"
   },
   onStart: async function ({ api, event, threadsData, message }) {
-    const uid = "61555220946194";
+    const uid = "61557618060479";
     const groupId = event.threadID;
     const threadData = await threadsData.get(groupId);
     const name = threadData.threadName;
@@ -25,7 +25,7 @@ module.exports = {
 
     if (!threads.includes(groupId) && event.logMessageType === "log:subscribe") {
       await message.send({
-        body: `❎ | You Added This Bot Without Permission !!\n\n✧Take Permission From bot Admin's to Use Elysia In Your Group !!\n✧Join Bot Support GC to Contact With Admin's !!\n\n✧Type ${p}botgc within 20 seconds.\n\n- or . contact 61555220946194.`,
+        body: `❎ | You Added This Bot Without Permission !!\n\n✧Take Permission From bot Admin's to Use Bot In Your Group !!\n✧Join Bot Support GC to Contact With Admin's !!\n\n✧Type ${p}botgc within 20 seconds.\n\n- or . contact 61555220946194.`,
         attachment: await getStreamFromURL("https://i.postimg.cc/rsVb8Ty4/4b8d6edb-d2aa-4ce1-aca5-4f90f7b5798a-1.png")
       });
     }
