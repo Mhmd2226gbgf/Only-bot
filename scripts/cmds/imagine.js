@@ -1,45 +1,59 @@
-const axios = require('axios');
-const fs = require('fs');
-const { get } = require('request-promise');
+module.exports.config = {
+	name: "generate",
+	version: "1.0.0",
+	credits: "Yan", //IMPLEMENTED TO MIRAI FROM GOATBOAT SERVER
+	description: "Create image from your text",
+	commandCategory: "info",
+  usages: "generate",
+	cooldowns: 5,
+  usePrefix: true,
+	dependencies: []
+};
 
-module.exports = {
-  config: {
-    name: 'gn',
-    aliases: [],
-    version: '1.0',
-    author: 'D_S',
-    countDown: 10,
-    role: 0,
-    shortDescription: 'Generate an image.',
-    longDescription: 'Generate an image.',
-    category: 'image',
-    guide: '{pn}[prompt | model]',
-  },
+module.exports.languages = {
+	tl: {
+  syntaxError: "⚠️ Mangyaring maglagay ng prompt",
+  error: "❗ May naganap na error, mangyaring subukan muli mamaya:\n%1",
+  serverError: "❗ Ang server ay sobrang abala, mangyaring subukan muli mamaya",
+},
+	en: {
+		syntaxError: "[ ! ] Please enter prompt..",
+		error: "❗ An error has occurred, Please try again later:\n%1",
+		serverError: "❗ Server is overloaded, please try again later",
+	},
+};
 
-  onStart: async function ({ api, args, message, event }) {
-    let path = __dirname + '/cache/image.png';
-    const tzt = args.join(' ').split('|').map(item => item.trim());
-    let txt = tzt[0];
-    let txt2 = tzt[1];
+module.exports.run = async function ({ api, event, args, getText }) {
+  const axios = require('axios');
+	const prompt = args.join(" ");
+	if (!prompt)
+		return api.sendMessage(getText("syntaxError"), event.threadID, event.messageID);
 
-    let tid = event.threadID;
-    let mid = event.messageID;
+	try {
+		const { data: imageStream } = await axios({
+			url: "https://goatbotserver.onrender.com/taoanhdep/texttoimage",
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			data: {
+				prompt,
+				styleId: 28,
+				aspect_ratio: "1:1",
+			},
+			responseType: "stream",
+		});
 
-    if (!args[0] || !txt || !txt2) {
-      return api.sendMessage('Please provide a prompt and a model. ex. -imagine dog | 5', tid, mid);
-    }
+		imageStream.path = "image.jpg";
 
-    try {
-      api.sendMessage('⏳ Generating...', tid, mid);
-
-      let enctxt = encodeURIComponent(txt);
-      let url = `https://api.easy-api.online/api/imggen?q=${enctxt}&model=${txt2}`;
-
-      let result = await axios.get(url, { responseType: 'arraybuffer' });
-      fs.writeFileSync(path, result.data);
-      api.sendMessage({ attachment: fs.createReadStream(path) }, tid, () => fs.unlinkSync(path), mid);
-    } catch (e) {
-      return api.sendMessage(e.message, tid, mid);
-    }
-  },
+		return api.sendMessage({
+			attachment: imageStream,
+		}, event.threadID);
+		api.sendMessage("Generated Photo" + prompt + "Downloaded Succesfully!", event.threadID, event.messageID)
+	} catch (err) {
+		return api.sendMessage(
+			getText("error", err.response?.data?.message || err.message),
+			event.threadID
+		);
+	}
 };
