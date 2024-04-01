@@ -3,7 +3,7 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ ♥| Ade-Bot ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
+const doNotDelete = "[ ♥| Anu-Bot ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
 
 module.exports = {
 	config: {
@@ -34,7 +34,7 @@ module.exports = {
 			const categories = {};
 			let msg = "";
 
-			msg += `🇦 🇩 🇪 _🇧 🇴 🇹  \n\n◦❭❯❱ 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 ❰❮❬◦`; // replace with your name 
+			msg += `🇦 🇳 🇺   _🇧 🇴 🇹  \n\n◦❭❯❱ 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 ❰❮❬◦`; // replace with your name 
 
 			for (const [name, value] of commands) {
 				if (value.config.role > 1 && role < value.config.role) continue;
@@ -65,29 +65,16 @@ module.exports = {
 			msg += `🌸 | Admin : Aak_Ash`; // its not decoy so change it if you want 
 
 			const helpListImages = [
-				'https://i.imgur.com/xyDcrW3.jpeg',
+				'https://i.ibb.co/dp6YfTq/image.jpg',
 
-				'https://i.imgur.com/wdZLWTU.jpeg',
+				'https://i.ibb.co/gv9wTkV/image.jpg',
 
-				'https://i.imgur.com/cJksczg.jpeg',
+				'https://i.ibb.co/gMb27mj/image.jpg',
 
-				'https://i.imgur.com/URCFjrS.jpeg',
+				'https://i.ibb.co/r0nHN2M/image.jpg',
 
-				'https://i.imgur.com/iAHVc1a.jpeg',
-													'https://i.imgur.com/OSWG34k.jpeg',
-
-				'https://i.imgur.com/sTHeaMB.jpeg',
-
-				'https://i.imgur.com/6zzEoxf.jpeg',
-
-				'https://i.imgur.com/rDsUmFW.jpeg',
-
-				'https://i.imgur.com/Ew37GbZ.jpeg',
-
-				'https://i.imgur.com/QXnv0P8.jpeg',                                    
-				'https://i.imgur.com/f755v5B.jpeg', 
-
-				'https://i.imgur.com/7g5AKgh.jpeg',
+				'https://i.ibb.co/wBCxH53/image.jpg',
+												
 			];
 
 			const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
@@ -112,7 +99,7 @@ module.exports = {
 				const guideBody = configCommand.guide?.en || "No guide available.";
 				const usage = guideBody.replace(/{p}/g, prefix).replace(/{n}/g, configCommand.name);
 
-				const response = `╭── NAME ────⭓
+const response = `╭── NAME ────⭓
 	│ ${configCommand.name}
 	├── INFO
 	│ Description: ${longDescription}
@@ -146,4 +133,4 @@ function roleTextToString(roleText) {
 		default:
 			return "Unknown role";
 	}
-				}
+		}
