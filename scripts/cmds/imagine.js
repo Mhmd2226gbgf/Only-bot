@@ -4,8 +4,8 @@ const { get } = require('request-promise');
 
 module.exports = {
   config: {
-    name: 'imagine',
-    aliases: [gn],
+    name: 'gn',
+    aliases: [],
     version: '1.0',
     author: 'D_S',
     countDown: 10,
