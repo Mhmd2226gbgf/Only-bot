@@ -30,7 +30,7 @@ module.exports = {
 
       try {
         const modelParam = modelPart;
-        let apiUrl = `https://turtle-apis.onrender.com/api/v2/sdxl?prompt=${encodeURIComponent(promptPart)}`;
+        let apiUrl = `0b4b10c75204219c63f8edddf51a9fa4cb4c2cda1560aa2f`;
         if (modelPart) {
           apiUrl += `&model=${modelParam}`;
         }
