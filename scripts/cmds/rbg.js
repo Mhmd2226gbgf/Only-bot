@@ -1,14 +1,14 @@
 const axios = require("axios");
 const fs = require("fs-extra");
 
-const apiKey = "Qfmz1xcUvaehs1SaYFLzsBzp";
+const apiKey = "JXtz6tpQxMgGExwbdd6K63rd";
 
 module.exports = {
     config: {
         name: "rbg",
         version: "2.0",
         aliases: ["rbg"],
-        author: "Strawhat Luffy",//fixed by kshitiz 
+        author: "Aakash-D_S",//fixed by Anu
         countDown: 20,
         role: 2,
         category: "𝗠𝗘𝗗𝗜𝗔",
