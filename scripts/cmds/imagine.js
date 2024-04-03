@@ -1,79 +1,77 @@
 const axios = require('axios');
+
 module.exports = {
   config: {
-    name: "im",
-    version: "1.0",
-    author: "rehat--",
+    name: "generate",
+    version: "1.1",
+    author: "MILAN",
     countDown: 10,
-    longDescription: {
-      en: "Create an image from your text with 4 models like midjourney."
+    shortDescription: {
+      en: "V4 Image Generator."
     },
-    category: "ai",
+    longDescription: {
+      en: "Create image from your text with 4 model like midjourney."
+    },
+    category: "AI-IMAGE",
     role: 0,
     guide: {
-      en: '1 | DreamshaperXL10' +
-        '\n2 | DynavisionXL' +
-        '\n3 | JuggernautXL' +
-        '\n4 | RealismEngineSDXL' +
-        '\n5 | Sdxl 1.0'
+      en: "{pn} <prompt> or {pn} <prompt> | <model>\n\nHere's Available Models:\n[1]. Analog V1\n[2]. Anything V3\n[3]. Anything V4.5\n[4]. AbyssOrangeMix V3\n[5]. Deliberate V2\n[6]. Dreamlike Diffusion V1\n[7]. Dreamlike Diffusion V2\n[8]. Dreamshaper 5 baked vae\n[9]. Dreamshaper 6 baked vae\n[10]. Elldreth's Vivid\n[11]. Lyriel V1.5\n[12]. Lyriel V1.6\n[13]. MechaMix V1.0\n[14]. MeinaMix Meina V9\n[15]. Openjourney V4\n[16]. Portrait V1\n[17]. Realistic Vision V1.4\n[18]. Realistic Vision V2.0\n[19]. ReV Animated V1.2.2\n[20]. SDV1.4\n[21]. SDV1.5\n[22]. Shonin's Beautiful People V1.0\n[23]. TheAlly's Mix\n[24]. Timeless V1"
     }
   },
 
   onStart: async function ({ api, event, args, message }) {
-    const info = args.join(' ');
-    const [promptPart, modelPart] = info.split('|').map(item => item.trim());
+  const [promptPart, modelPart] = args.join(" ").split("|").map(part => part.trim());
 
-    if (!promptPart) return message.reply("Add something baka.");
+  if (!promptPart) return message.reply("Add something baka");
 
-    message.reply("[⏱️]𝙄𝙈𝘼𝙂𝙄𝙉𝙀.....", async (err, info) => {
-      let ui = info.messageID;
+  message.reply("✅| Creating your Imagination...", async (err, info) => {
+    let ui = info.messageID;
 
-      try {
-        const modelParam = modelPart;
-        let apiUrl = `0b4b10c75204219c63f8edddf51a9fa4cb4c2cda1560aa2f`;
-        if (modelPart) {
-          apiUrl += `&model=${modelParam}`;
-        }
-
-        const response = await axios.get(apiUrl);
-        const combinedImg = response.data.combinedImage;
-        const img = response.data.imageUrls.image;
-        message.unsend(ui);
-        message.reply({
-          body: "✨𝙂𝙀𝙉𝙀𝙍𝘼𝙏𝙀𝘿 𝙋𝙄𝘾✨\n────────────\n𝙍𝙀𝙋𝙇𝙔 𝙒𝙄𝙏𝙃 𝙉𝙐𝙈𝘽𝙀𝙍\n[1, 2, 3, 4]\n>𝙏𝙊 𝙂𝙀𝙏 𝙏𝙃𝙀 𝙋𝙄𝘾\n────────────\n🟢 𝘼𝙀-𝙎𝙏𝙃𝙀𝙍 ⚪",
-          attachment: await global.utils.getStreamFromURL(combinedImg)
-        }, async (err, info) => {
-          let id = info.messageID; global.GoatBot.onReply.set(info.messageID, {
-            commandName: this.config.name,
-            messageID: info.messageID,
-            author: event.senderID,
-            imageUrls: response.data.imageUrls
-          });
-        });
-      } catch (error) {
-        console.error(error);
-        api.sendMessage(`${error}`, event.threadID);
+    try {
+      let apiUrl = `https://image.restfulapi.repl.co/generatev4?prompt=${encodeURIComponent(promptPart)}`;
+      if (modelPart) {
+        apiUrl += `&model=${encodeURIComponent(modelPart)}`;
       }
-    });
-  },
+
+      const response = await axios.get(apiUrl);
+      const img = response.data.combinedImageUrl;
+      message.unsend(ui); // Unsend the "Creating your Imagination" message
+
+      message.reply({
+        body: "Here's your imagination 🖼️. Please reply with the image number (1, 2, 3, 4) to get the corresponding image in high resolution.",
+        attachment: await global.utils.getStreamFromURL(img)
+      }, async (err, info) => {
+        let id = info.messageID;
+        global.GoatBot.onReply.set(info.messageID, {
+          commandName: this.config.name,
+          messageID: info.messageID,
+          author: event.senderID,
+          imageUrls: response.data.imageUrls // Store the imageUrls in the onReply data
+        });
+      });
+    } catch (error) {
+      console.error(error);
+      api.sendMessage(`Error: ${error}`, event.threadID);
+    }
+  });
+},
+
 
   onReply: async function ({ api, event, Reply, usersData, args, message }) {
     const reply = parseInt(args[0]);
     const { author, messageID, imageUrls } = Reply;
-
     if (event.senderID !== author) return;
-
     try {
-      if (reply >= 1 && reply <= 4) {
+      if (reply >=1 && reply <= 4) {
         const img = imageUrls[`image${reply}`];
         message.reply({ attachment: await global.utils.getStreamFromURL(img) });
       } else {
-        message.reply("❌ | Invalid number try again later.");
+        message.reply("Invalid image number. Please reply with a number between 1 and 4.");
       }
     } catch (error) {
       console.error(error);
-      message.reply(`${error}`, event.threadID);
+      api.sendMessage(`Error: ${error}`, event.threadID);
     }
-    await message.unsend(Reply.messageID);
+  message.unsend(Reply.messageID);
   },
 };
