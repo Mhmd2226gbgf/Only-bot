@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     name: "set",
-    aliases: ['anu'],
+    aliases: ['-'],
     version: "1.0",
     author: "Samir B. Thakuri",
     role: 0,
