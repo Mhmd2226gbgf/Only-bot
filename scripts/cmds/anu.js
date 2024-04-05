@@ -1,4 +1,4 @@
-module.exports = {
+.cmd install an.js module.exports = {
 	config: {
 			name: "anu",
 			version: "1.0",
@@ -16,26 +16,12 @@ onChat: async function({
 	getLang
 }) {
 	if (event.body && event.body.toLowerCase() == "anu") return message.reply("yes.. Master...🥳❤️‍🩹");
-},
-   {
 	if (event.body && event.body.toLowerCase() == "good morning") return message.reply("good morning..🌄❤️‍🩹");
-},
- {
 	if (event.body && event.body.toLowerCase() == "good evening") return message.reply("good evening🌃❤️‍🩹");
- },
- {
 	if (event.body && event.body.toLowerCase() == "good afternoon") return message.reply("good afternoon ❤️‍🩹");
- },
- {
 	if (event.body && event.body.toLowerCase() == "good night") return message.reply("good night 💤🌙");
- },
- {
 	if (event.body && event.body.toLowerCase() == "hi") return message.reply("yes...🥳");
- },
- {
 	if (event.body && event.body.toLowerCase() == "hello") return message.reply("◡̈⋆ʜᴇʟʟᴏ(●’◡’●)ﾉ");
- },
- {
-	if (event.body && event.body.toLowerCase() == " how are you") return message.reply("fine and you..?");
+	if (event.body && event.body.toLowerCase() == "how are you") return message.reply("fine and you..?");
  }
 };
