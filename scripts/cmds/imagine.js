@@ -4,13 +4,13 @@ module.exports = {
   config: {
     name: "generate",
     version: "1.1",
-    author: "MILAN",
+    author: "D_S",
     countDown: 10,
     shortDescription: {
-      en: "V4 Image Generator."
+      en: " Image Generator."
     },
     longDescription: {
-      en: "Create image from your text with 4 model like midjourney."
+      en: "Create image from your text ."
     },
     category: "AI-IMAGE",
     role: 0,
@@ -28,7 +28,7 @@ module.exports = {
     let ui = info.messageID;
 
     try {
-      let apiUrl = `https://image.restfulapi.repl.co/generatev4?prompt=${encodeURIComponent(promptPart)}`;
+      let apiUrl = `https://apis-samir.onrender.com/imagine?prompt=${encodeURIComponent(promptPart)}`;
       if (modelPart) {
         apiUrl += `&model=${encodeURIComponent(modelPart)}`;
       }
@@ -38,7 +38,7 @@ module.exports = {
       message.unsend(ui); // Unsend the "Creating your Imagination" message
 
       message.reply({
-        body: "Here's your imagination 🖼️. Please reply with the image number (1, 2, 3, 4) to get the corresponding image in high resolution.",
+        body: "Here's your imagination 🖼️.",
         attachment: await global.utils.getStreamFromURL(img)
       }, async (err, info) => {
         let id = info.messageID;
