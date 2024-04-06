@@ -1,4 +1,4 @@
-.cmd install an.js module.exports = {
+module.exports = {
 	config: {
 			name: "anu",
 			version: "1.0",
