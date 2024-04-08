@@ -1,5 +1,4 @@
 name: main_bot
-
 on:
   push:
     branches:
