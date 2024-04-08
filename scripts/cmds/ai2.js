@@ -2,7 +2,7 @@ const { getPrefix, getStreamFromURL, uploadImgbb } = global.utils;
 async function ai({ message: m, event: e, args: a, usersData: u }) {
   var p = [`${await getPrefix(e.threadID)}${this.config.name}`,
 `${this.config.name}`
-/*"a"
+/*"ai2"
 *you can add more prefix here
 */
 ]; 
@@ -52,8 +52,8 @@ mentions: __
 }
 module.exports = {
 config: {
- name: "a",
-aliases: [" A"],
+ name: "ai2",
+aliases: [""],
 version: 1.6,
 author: "Jun",
 role: 0,
