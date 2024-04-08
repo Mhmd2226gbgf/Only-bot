@@ -10,7 +10,7 @@ on:
   my_job:
     name: deploy to staging
     runs-on: ubuntu-22.04
-     - name: Anu
+     
   uses: actions/setup-node@v4
   with:
     node-version: '16.x'
