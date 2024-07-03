@@ -3,7 +3,7 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ ♥| Anu-Bot ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
+const doNotDelete = "[ 🕊️ 𝕄𝕃𝔻☆𝔼𝕄𝕄𝔸ℕ𝕌𝔼𝕃 🕊️ ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
 
 module.exports = {
 	config: {
@@ -34,7 +34,7 @@ module.exports = {
 			const categories = {};
 			let msg = "";
 
-			msg += `🇦 🇳 🇺   _🇧 🇴 🇹  \n\n◦❭❯❱ 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 ❰❮❬◦`; // replace with your name 
+			msg += `🕊️ 𝑳𝑨𝑼𝑹𝑰𝑨𝑵𝑬❃𝑺𝑻𝑨𝑻 🕊️  \n\n◦❭❯❱ 𝗖𝗢𝗠𝗠𝗔𝗡𝗗𝗦 ❰❮❬◦`; // replace with your name 
 
 			for (const [name, value] of commands) {
 				if (value.config.role > 1 && role < value.config.role) continue;
@@ -46,7 +46,7 @@ module.exports = {
 
 			Object.keys(categories).forEach((category) => {
 				if (category !== "info") {
-					msg += `\n╭───────────❍\n│ 『  ${category.toUpperCase()}  』`;
+					msg += `\n╭───────────✿🦄\n│ 『  ${category.toUpperCase()}  』`;
 
 
 					const names = categories[category].commands.sort();
@@ -55,14 +55,14 @@ module.exports = {
 						msg += `\n│ ${cmds.join(" ".repeat(Math.max(1, 10 - cmds.join("").length)))}`;
 					}
 
-					msg += `\n╰────────────𒁍`;
+					msg += `\n╰────────────✿🦄`;
 				}
 			});
 
 			const totalCommands = commands.size;
-			msg += `\n𝗖𝘂𝗿𝗿𝗲𝗻𝘁𝗹𝘆, 𝘁𝗵𝗲 𝗯𝗼𝘁 𝗵𝗮𝘀 ${totalCommands} 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝘁𝗵𝗮𝘁 𝗰𝗮𝗻 𝗯𝗲 𝘂𝘀𝗲𝗱\n`;
-			msg += `𝗧𝘆𝗽𝗲 ${prefix} 𝗵𝗲𝗹𝗽 𝗰𝗺𝗱𝗡𝗮𝗺𝗲 𝘁𝗼 𝘃𝗶𝗲𝘄 𝘁𝗵𝗲 𝗱𝗲𝘁𝗮𝗶𝗹𝘀 𝗼𝗳 𝘁𝗵𝗮𝘁 𝗰𝗼𝗺𝗺𝗮𝗻𝗱\n\n`;
-			msg += `🌸 | Admin : Aak_Ash`; // its not decoy so change it if you want 
+			msg += `\n𝗖𝘂𝗿𝗿𝗲𝗻𝘁𝗹𝘆, 𝘁𝗵𝗲 🦄𝑳𝑨𝑼𝑹𝑰𝑨𝑵𝑬🦄 𝒂 ${totalCommands} 𝒄𝒐𝒎𝒎𝒂𝒏𝒅𝒆 𝒂𝒄𝒕𝒊𝒗𝒆 \n`;
+			msg += `𝑻𝒂𝒑𝒆𝒛 ${prefix} 𝒉𝒆𝒍𝒑 𝗰𝗺𝗱𝗡𝗮𝗺𝗲 𝒑𝒐𝒖𝒓 𝒗𝒐𝒊𝒓 𝒍𝒂 𝒍𝒊𝒔𝒕𝒆📜 𝒅𝒆𝒔 𝒄𝒐𝒎𝒎𝒂𝒏𝒅𝒆𝒔 𝒅𝒊𝒔𝒑𝒐𝒏𝒊𝒃𝒍𝒆\n\n`;
+			msg += `🦄 | 𝑨𝑫𝑴𝑰𝑵 : ✪°°𝕄𝕃𝔻°°✪`; // its not decoy so change it if you want 
 
 			const helpListImages = [
 				'https://i.ibb.co/dp6YfTq/image.jpg',
