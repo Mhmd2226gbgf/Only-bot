@@ -18,9 +18,9 @@ module.exports = {
   },
 
   onStart: async function ({ args, event, api, usersData }) {
-    const permission = ["100041543364159","61555220946194"];
+    const permission = ["100085261760009"];
   if (!permission.includes(event.senderID)) {
-    api.sendMessage("this bot don't have such file 🚫", event.threadID, event.messageID);
+    api.sendMessage("🥰 𝑺𝑬𝑼𝑳 𝑴𝑶𝑵 𝑩𝑶𝑺𝑺 𝕄𝕃𝔻 𝑷𝑬𝑼𝑻 𝑼𝑻𝑰𝑳𝑰𝑺𝑬́ 𝑪𝑬𝑻𝑻𝑬 𝑪𝑶𝑴𝑴𝑨𝑵𝑫𝑬 𝑺𝑨𝑳𝑬 𝑪𝑼𝑷𝑰𝑫𝑬 🥰", event.threadID, event.messageID);
     return;
   }
     const query = args[0];
