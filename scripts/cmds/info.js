@@ -25,12 +25,12 @@ module.exports = {
   },
 
   onStart: async function ({ message }) {
-    const botName = "Anu_Ade";
-    const botPrefix = "!";
-    const authorName = "Aakash Bhusal";
-    const authorFB = "__";
-    const authorInsta = " M_o_o_n_0_hehe,no_more_with_you_01";
-    const status = "Single ";
+    const botName = "🦄𝑳𝑨𝑼𝑹𝑰𝑨𝑵𝑬☆𝑺𝑻𝑨𝑻🦄";
+    const botPrefix = "'";
+    const authorName = "👑𝑴𝑳𝑫☆𝑬𝑴𝑴𝑨𝑵𝑼𝑬𝑳👑";
+    const authorFB = "m.me/100085261760009";
+    const authorInsta = " 𝑭𝑼𝑪𝑲 𝑰𝑵𝑺𝑻𝑨𝑮𝑹𝑨𝑴🥴";
+    const status = " 🖤 𝑪𝑬́𝑳𝑰𝑩𝑨𝑻𝑨𝑰𝑹𝑬 🖤 ";
 
     const urls = JSON.parse(fs.readFileSync('zoro.json'));
     const link = urls[Math.floor(Math.random() * urls.length)];
